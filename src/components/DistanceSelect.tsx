@@ -50,7 +50,7 @@ export default function DistanceSelect({
         Distance
         <select onChange={handleChange} value={selectedDistance}>
           {distanceNames.map((distanceName) => (
-            <option value={distanceName}>{distanceName}</option>
+            <option value={distanceName} key={distanceName}>{distanceName}</option>
           ))}
         </select>
       </label>
