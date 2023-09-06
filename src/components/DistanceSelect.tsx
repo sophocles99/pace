@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
-type DistanceProps = {
+type DistanceComponentProps = {
   distance: number;
   changeDistance: (newDistance: number) => void;
 };
@@ -8,7 +8,7 @@ type DistanceProps = {
 export default function DistanceSelect({
   distance,
   changeDistance,
-}: DistanceProps) {
+}: DistanceComponentProps) {
   const raceDistances: Record<string, number> = {
     "1 mile": 1.609344,
     "5K": 5,
@@ -40,7 +40,7 @@ export default function DistanceSelect({
 
   return (
     <>
-      <label>
+      <label className="input-container">
         Distance
         <select onChange={handleChange} value={selectedDistance}>
           <option value="" disabled>Choose a race distance</option>

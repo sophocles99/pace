@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
-type DistanceProps = {
+type DistanceComponentProps = {
   distance: number;
   changeDistance: (newDistance: number) => void;
 };
@@ -8,8 +8,8 @@ type DistanceProps = {
 export default function DistanceInput({
   distance,
   changeDistance,
-}: DistanceProps) {
-  const [newDistance, setNewDistance] = useState(String(distance));
+}: DistanceComponentProps) {
+  const [newDistance, setNewDistance] = useState("");
 
   useEffect(() => {
     const distanceString = distance ? String(distance) : "";
@@ -23,7 +23,7 @@ export default function DistanceInput({
   }
 
   return (
-    <label>
+    <label className="input-container">
       Distance
       <input value={newDistance} onChange={handleChange} type="number" />
     </label>

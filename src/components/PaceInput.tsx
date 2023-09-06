@@ -1,22 +1,32 @@
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-type PaceInputProps = {
+type PaceComponentProps = {
   pace: number;
-  setPace: Dispatch<SetStateAction<number>>;
+  changePace: (newPace: number) => void;
 };
 
-export default function PaceInput({ pace, setPace }: PaceInputProps) {
-  const [currentPace, setCurrentPace] = useState(pace);
+export default function PaceInput({ pace, changePace }: PaceComponentProps) {
+  const [newPace, setNewPace] = useState("");
+
+  useEffect(() => {
+    const minutes = Math.floor(pace / 60);
+    const seconds = pace % 60;
+    setNewPace(`${minutes}:${String(seconds).padStart(2, "0")}`);
+  }, [pace]);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const newPace = parseFloat(e.target.value);
-    setCurrentPace(newPace);
-    setPace(newPace);
+    const newValue = e.target.value;
+    setNewPace(newValue);
+    const newMinutes = parseInt(newValue.split(":")[0]);
+    const newSeconds = parseInt(newValue.split(":")[1]);
+    console.log(newMinutes, newSeconds);
+    changePace(newMinutes * 60 + newSeconds);
   }
   return (
-    <label>
+    <label className="input-container">
       Pace
-      <input value={currentPace} onChange={handleChange} type="number" />
+      <input value={newPace} onChange={handleChange} />
+      {/* <input value={currentPace} onChange={handleChange} type="number" /> */}
     </label>
   );
 }

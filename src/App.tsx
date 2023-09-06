@@ -11,11 +11,11 @@ export default function App() {
   const [duration, setDuration] = useState(0); // Duration in seconds
   const [lastChanged, setLastChanged] = useState("");
 
-  const changeDistance = (newDistance: number) => {
+  function changeDistance(newDistance: number) {
     setDistance(newDistance);
     setDuration(newDistance * pace);
     setLastChanged("distance");
-  };
+  }
   const paceMinutes = Math.floor(pace / 60);
   const paceSeconds = pace % 60;
   const paceString = `${paceMinutes}:${String(paceSeconds).padStart(
@@ -23,11 +23,17 @@ export default function App() {
     "0"
   )}min/km`;
 
+  function changePace(newPace: number) {
+    setPace(newPace);
+    setDuration(distance * newPace);
+    setLastChanged("pace");
+  }
+
   return (
     <div className="App">
       <DistanceInput distance={distance} changeDistance={changeDistance} />
       <DistanceSelect distance={distance} changeDistance={changeDistance} />
-      <PaceInput pace={pace} setPace={setPace} />
+      <PaceInput pace={pace} changePace={changePace} />
       <br />
       <p>Distance: {distance}km</p>
       <p>Pace: {paceString}</p>

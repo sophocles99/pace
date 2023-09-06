@@ -8,6 +8,14 @@
 .App {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: cornflowerblue;
   font-size: x-large;
+}
+
+.input-container {
+  width: 8rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid white;
 }
