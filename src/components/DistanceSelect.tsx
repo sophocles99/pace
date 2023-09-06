@@ -1,25 +1,17 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type DistanceSelectProps = {
   distance: number;
-  setDistance: Dispatch<SetStateAction<number>>;
+  changeDistance: (newDistance: number) => void;
 };
+
+type DistancePair = [string, number];
 
 export default function DistanceSelect({
   distance,
-  setDistance,
+  changeDistance,
 }: DistanceSelectProps) {
-  const distanceNames: string[] = [
-    "1 mile",
-    "5K",
-    "10K",
-    "15K",
-    "10 miles",
-    "Half Marathon",
-    "20 miles",
-    "Marathon",
-  ];
-  const distanceLookup: Record<string, number> = {
+  const raceDistances: Record<string, number> = {
     "1 mile": 1.609344,
     "5K": 5,
     "10K": 10,
@@ -27,21 +19,23 @@ export default function DistanceSelect({
     "10 miles": 16.09344,
     "Half Marathon": 21.0975,
     "20 miles": 32.18688,
-    Marathon: 42.195,
+    "Marathon": 42.195
   };
 
-  const matchingDistance: string | undefined = distanceNames.find(
-    (distanceName) =>
-      distance === Math.round(distanceLookup[distanceName] * 100) / 100
+  const matchingDistancePair: DistancePair | undefined = Object.entries(raceDistances).find(
+    (raceDistancePair) => distance === Math.round(raceDistancePair[1] * 100) / 100
   );
 
-  const [selectedDistance, setSelectedDistance] = useState(
-    matchingDistance ? matchingDistance : ""
-  );
+  const matchingDistanceName = matchingDistancePair
+    ? matchingDistancePair[0]
+    : "";
 
-  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedDistance(e.target.value);
-    setDistance(distanceLookup[e.target.value]);
+  const [selectedDistance, setSelectedDistance] =
+    useState(matchingDistanceName);
+
+  function handleChange(e: ChangeEvent<HTMLSelectElement>) {
+    const newDistance = raceDistances[e.target.value]
+    changeDistance(newDistance)
   }
 
   return (
@@ -49,9 +43,13 @@ export default function DistanceSelect({
       <label>
         Distance
         <select onChange={handleChange} value={selectedDistance}>
-          {distanceNames.map((distanceName) => (
-            <option value={distanceName} key={distanceName}>{distanceName}</option>
-          ))}
+          {Object.keys(raceDistances).map((raceDistanceName) => {
+            return (
+              <option value={raceDistanceName} key={raceDistanceName}>
+                {raceDistanceName}
+              </option>
+            );
+          })}
         </select>
       </label>
     </>
