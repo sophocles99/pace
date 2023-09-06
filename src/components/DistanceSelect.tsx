@@ -1,16 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-type DistanceSelectProps = {
+type DistanceProps = {
   distance: number;
   changeDistance: (newDistance: number) => void;
 };
 
-type DistancePair = [string, number];
-
 export default function DistanceSelect({
   distance,
   changeDistance,
-}: DistanceSelectProps) {
+}: DistanceProps) {
   const raceDistances: Record<string, number> = {
     "1 mile": 1.609344,
     "5K": 5,
@@ -19,23 +17,25 @@ export default function DistanceSelect({
     "10 miles": 16.09344,
     "Half Marathon": 21.0975,
     "20 miles": 32.18688,
-    "Marathon": 42.195
+    Marathon: 42.195,
   };
 
-  const matchingDistancePair: DistancePair | undefined = Object.entries(raceDistances).find(
-    (raceDistancePair) => distance === Math.round(raceDistancePair[1] * 100) / 100
-  );
+  const [selectedDistance, setSelectedDistance] = useState("");
 
-  const matchingDistanceName = matchingDistancePair
-    ? matchingDistancePair[0]
-    : "";
+  useEffect(() => {
+    const matchingDistanceName: string =
+      Object.keys(raceDistances).find(
+        (raceDistanceName) =>
+          Math.round(distance * 100) / 100 ===
+          Math.round(raceDistances[raceDistanceName] * 100) / 100
+      ) || "";
+    setSelectedDistance(matchingDistanceName);
+  }, [distance]);
 
-  const [selectedDistance, setSelectedDistance] =
-    useState(matchingDistanceName);
-
-  function handleChange(e: ChangeEvent<HTMLSelectElement>) {
-    const newDistance = raceDistances[e.target.value]
-    changeDistance(newDistance)
+  function handleChange(event: ChangeEvent<HTMLSelectElement>) {
+    const newDistanceName = event.target.value;
+    setSelectedDistance(newDistanceName);
+    changeDistance(raceDistances[newDistanceName]);
   }
 
   return (
@@ -43,6 +43,7 @@ export default function DistanceSelect({
       <label>
         Distance
         <select onChange={handleChange} value={selectedDistance}>
+          <option value="" disabled>Choose a race distance</option>
           {Object.keys(raceDistances).map((raceDistanceName) => {
             return (
               <option value={raceDistanceName} key={raceDistanceName}>
