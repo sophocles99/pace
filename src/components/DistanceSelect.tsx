@@ -41,7 +41,7 @@ export default function DistanceSelect({
   return (
     <>
       <label className="input-container">
-        Distance
+        Race Distance
         <select onChange={handleChange} value={selectedDistance}>
           <option value="" disabled>Choose a race distance</option>
           {Object.keys(raceDistances).map((raceDistanceName) => {

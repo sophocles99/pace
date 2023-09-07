@@ -12,8 +12,7 @@ export default function DistanceInput({
   const [newDistance, setNewDistance] = useState("");
 
   useEffect(() => {
-    const distanceString = distance ? String(distance) : "";
-    setNewDistance(distanceString);
+    setNewDistance(String(distance));
   }, [distance]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -22,10 +21,20 @@ export default function DistanceInput({
     changeDistance(Number(newValue));
   }
 
+  function handleClick(increment: number) {
+    return function () {
+      changeDistance(distance + increment);
+    };
+  }
+
   return (
-    <label className="input-container">
-      Distance
-      <input value={newDistance} onChange={handleChange} type="number" />
-    </label>
+    <div className="input-container">
+      <label>
+        Distance
+        <input value={newDistance} onChange={handleChange} type="number" />
+      </label>
+      <button onClick={handleClick(0.1)}>Up</button>
+      <button onClick={handleClick(-0.1)}>Down</button>
+    </div>
   );
 }

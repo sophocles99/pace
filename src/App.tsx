@@ -11,17 +11,18 @@ export default function App() {
   const [duration, setDuration] = useState(0); // Duration in seconds
   const [lastChanged, setLastChanged] = useState("");
 
-  function changeDistance(newDistance: number) {
-    setDistance(newDistance);
-    setDuration(newDistance * pace);
-    setLastChanged("distance");
-  }
   const paceMinutes = Math.floor(pace / 60);
   const paceSeconds = pace % 60;
   const paceString = `${paceMinutes}:${String(paceSeconds).padStart(
     2,
     "0"
   )}min/km`;
+  
+  function changeDistance(newDistance: number) {
+    setDistance(newDistance);
+    setDuration(newDistance * pace);
+    setLastChanged("distance");
+  }
 
   function changePace(newPace: number) {
     setPace(newPace);

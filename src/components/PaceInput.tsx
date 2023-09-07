@@ -13,7 +13,7 @@ export default function PaceInput({ pace, changePace }: PaceComponentProps) {
     const seconds = pace % 60;
     const paceString = `${minutes}:${String(seconds).padStart(2, "0")}`;
     setNewPace(paceString);
-  }, []);
+  }, [pace]);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     let newValue = e.target.value;
@@ -24,18 +24,20 @@ export default function PaceInput({ pace, changePace }: PaceComponentProps) {
     changePace(Number(newMinutes) * 60 + Number(newSeconds));
   }
 
-  const handleClick = (increment: number) => () => {
-    changePace(pace + increment);
+  function handleClick(increment: number) {
+    return function () {
+      changePace(pace + increment);
+    };
   }
 
   return (
-    <>
-      <label className="input-container">
+    <div className="input-container">
+      <label>
         Pace
         <input value={newPace} onChange={handleChange} inputMode="numeric" />
       </label>
       <button onClick={handleClick(1)}>Up</button>
       <button onClick={handleClick(-1)}>Down</button>
-    </>
+    </div>
   );
 }
