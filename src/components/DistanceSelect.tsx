@@ -2,12 +2,12 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 type DistanceProps = {
   distance: number;
-  changeDistance: (newDistance: number) => void;
+  changeValue: (valueType: string, newDistance: number) => void;
 };
 
 export default function DistanceSelect({
   distance,
-  changeDistance,
+  changeValue,
 }: DistanceProps) {
   const raceDistances: Record<string, number> = {
     "1 mile": 1.609344,
@@ -35,7 +35,7 @@ export default function DistanceSelect({
   function handleChange(event: ChangeEvent<HTMLSelectElement>) {
     const newDistanceName = event.target.value;
     setSelectedDistance(newDistanceName);
-    changeDistance(raceDistances[newDistanceName]);
+    changeValue("distance", raceDistances[newDistanceName]);
   }
 
   return (
@@ -43,7 +43,9 @@ export default function DistanceSelect({
       <label className="input-container">
         Race Distance
         <select onChange={handleChange} value={selectedDistance}>
-          <option value="" disabled>Choose a race distance</option>
+          <option value="" disabled>
+            Choose a race distance
+          </option>
           {Object.keys(raceDistances).map((raceDistanceName) => {
             return (
               <option value={raceDistanceName} key={raceDistanceName}>

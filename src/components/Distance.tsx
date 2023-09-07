@@ -2,12 +2,12 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 type DistanceProps = {
   distance: number;
-  changeDistance: (newDistance: number) => void;
+  changeValue: (valueType: string, newDistance: number) => void;
 };
 
 export default function DistanceInput({
   distance,
-  changeDistance,
+  changeValue,
 }: DistanceProps) {
   const [newDistance, setNewDistance] = useState("");
 
@@ -17,13 +17,14 @@ export default function DistanceInput({
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const newValue = event.target.value;
+    console.log("handleChange", newValue)
     setNewDistance(newValue);
-    changeDistance(Number(newValue));
+    changeValue("distance", Math.round(Number(newValue) * 1000) / 1000);
   }
 
   function handleClick(increment: number) {
     return function () {
-      changeDistance(distance + increment);
+      changeValue("distance", Math.round((distance + increment) * 1000) / 1000);
     };
   }
 

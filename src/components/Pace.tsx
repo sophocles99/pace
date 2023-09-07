@@ -2,13 +2,14 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 type PaceProps = {
   pace: number;
-  changePace: (newPace: number) => void;
+  changeValue: (valueType: string, newPace: number) => void;
 };
 
-export default function PaceInput({ pace, changePace }: PaceProps) {
+export default function PaceInput({ pace, changeValue }: PaceProps) {
   const [newPace, setNewPace] = useState("");
 
   useEffect(() => {
+    console.log(pace)
     const minutes = Math.floor(pace / 60);
     const seconds = pace % 60;
     const paceString = `${minutes}:${String(seconds).padStart(2, "0")}`;
@@ -21,12 +22,12 @@ export default function PaceInput({ pace, changePace }: PaceProps) {
     const newMinutes = newValue.slice(-4, -2);
     const newSeconds = newValue.slice(-2);
     setNewPace(`${newMinutes}:${newSeconds}`);
-    changePace(Number(newMinutes) * 60 + Number(newSeconds));
+    changeValue("pace", Number(newMinutes) * 60 + Number(newSeconds));
   }
 
   function handleClick(increment: number) {
     return function () {
-      changePace(pace + increment);
+      changeValue("pace", pace + increment);
     };
   }
 

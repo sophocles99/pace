@@ -1,50 +1,57 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import "./App.css";
 
 import Distance from "./components/Distance";
 import DistanceSelect from "./components/DistanceSelect";
-import Duration from "./components/Duration";
+import Time from "./components/Time";
 import Pace from "./components/Pace";
 
 export default function App() {
   const [distance, setDistance] = useState(5); // Distance in km
   const [pace, setPace] = useState(360); // Pace in seconds per km
-  const [duration, setDuration] = useState(0); // Duration in seconds
-  const [lastChanged, setLastChanged] = useState("");
+  const [time, setTime] = useState(1800); // Time in seconds
+  const setRecentlyChanged = useState(["distance", "pace"])[1];
 
-  const paceMinutes = Math.floor(pace / 60);
-  const paceSeconds = pace % 60;
-  const paceString = `${paceMinutes}:${String(paceSeconds).padStart(
-    2,
-    "0"
-  )}min/km`;
+  const setFunctions: Record<string, Dispatch<React.SetStateAction<number>>> = {
+    distance: setDistance,
+    pace: setPace,
+    time: setTime,
+  };
 
-  function changeDistance(newDistance: number) {
-    setDistance(newDistance);
-    setDuration(newDistance * pace);
-    setLastChanged("distance");
-  }
+  function changeValue(valueType: string, newValue: number) {
+    console.log("valueType: ", valueType);
+    setFunctions[valueType](newValue);
+    setRecentlyChanged((currentRecentlyChanged) => {
+      
+      const newRecentlyChanged = [...currentRecentlyChanged];
+      if (newRecentlyChanged[0] !== valueType) {
+        newRecentlyChanged[1] = newRecentlyChanged[0];
+        newRecentlyChanged[0] = valueType;
+      }
+      console.log(newRecentlyChanged);
+      
+      if ((valueType === "distance")) {
+        if (newRecentlyChanged[1] === "pace") {
+          setTime(newValue * pace);
+        } else {
+          setPace(time / newValue);
+        }
+      }
 
-  function changePace(newPace: number) {
-    setPace(newPace);
-    setDuration(distance * newPace);
-    setLastChanged("pace");
-  }
-
-  function changeDuration(newDuration: number) {
-    setDuration(newDuration)
+      return newRecentlyChanged;
+    });
   }
 
   return (
     <div className="App">
-      <Distance distance={distance} changeDistance={changeDistance} />
-      <DistanceSelect distance={distance} changeDistance={changeDistance} />
-      <Pace pace={pace} changePace={changePace} />
-      <Duration duration={duration} changeDuration={changeDuration}/>
+      <Distance distance={distance} changeValue={changeValue} />
+      <DistanceSelect distance={distance} changeValue={changeValue} />
+      <Pace pace={pace} changeValue={changeValue} />
+      <Time time={time} changeValue={changeValue} />
       <br />
-      <p>Distance: {distance}km</p>
-      <p>Pace: {paceString}</p>
-      <p>Duration: {duration}</p>
+      <p>Distance: {distance}</p>
+      <p>Pace: {pace}</p>
+      <p>Time: {time}</p>
     </div>
   );
 }
