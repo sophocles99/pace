@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
-type PaceComponentProps = {
+type PaceProps = {
   pace: number;
   changePace: (newPace: number) => void;
 };
 
-export default function PaceInput({ pace, changePace }: PaceComponentProps) {
+export default function PaceInput({ pace, changePace }: PaceProps) {
   const [newPace, setNewPace] = useState("");
 
   useEffect(() => {

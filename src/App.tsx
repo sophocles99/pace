@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
-import DistanceInput from "./components/DistanceInput";
+import Distance from "./components/Distance";
 import DistanceSelect from "./components/DistanceSelect";
-import PaceInput from "./components/PaceInput";
+import Duration from "./components/Duration";
+import Pace from "./components/Pace";
 
 export default function App() {
   const [distance, setDistance] = useState(5); // Distance in km
@@ -17,7 +18,7 @@ export default function App() {
     2,
     "0"
   )}min/km`;
-  
+
   function changeDistance(newDistance: number) {
     setDistance(newDistance);
     setDuration(newDistance * pace);
@@ -30,11 +31,16 @@ export default function App() {
     setLastChanged("pace");
   }
 
+  function changeDuration(newDuration: number) {
+    setDuration(newDuration)
+  }
+
   return (
     <div className="App">
-      <DistanceInput distance={distance} changeDistance={changeDistance} />
+      <Distance distance={distance} changeDistance={changeDistance} />
       <DistanceSelect distance={distance} changeDistance={changeDistance} />
-      <PaceInput pace={pace} changePace={changePace} />
+      <Pace pace={pace} changePace={changePace} />
+      <Duration duration={duration} changeDuration={changeDuration}/>
       <br />
       <p>Distance: {distance}km</p>
       <p>Pace: {paceString}</p>
