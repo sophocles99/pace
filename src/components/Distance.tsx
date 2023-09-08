@@ -32,13 +32,13 @@ export default function DistanceInput({
   };
 
   return (
-    <section className="value-container">
-      <label>
-        Distance
+    <label className="value-container">
+      Distance
+      <section className="value">
+        <button onClick={handleClick(0.1)}>Up</button>
         <input value={newDistance} onChange={handleChange} type="number" />
-      </label>
-      <button onClick={handleClick(0.1)}>Up</button>
-      <button onClick={handleClick(-0.1)}>Down</button>
-    </section>
+        <button onClick={handleClick(-0.1)}>Down</button>
+      </section>
+    </label>
   );
 }

@@ -39,9 +39,9 @@ export default function DistanceSelect({
   };
 
   return (
-    <section className="value-container">
-      <label>
-        Race Distance
+    <label className="value-container">
+      Race Distance
+      <section className="value">
         <select onChange={handleChange} value={selectedDistance}>
           <option value="" disabled>
             Choose a race distance
@@ -54,7 +54,7 @@ export default function DistanceSelect({
             );
           })}
         </select>
-      </label>
-    </section>
+      </section>
+    </label>
   );
 }

@@ -30,13 +30,13 @@ export default function PaceInput({ pace, changeValue }: PaceProps) {
   };
 
   return (
-    <section className="value-container">
-      <label>
-        Pace
+    <label className="value-container">
+      Pace
+      <section className="value">
+        <button onClick={makeHandleClick(1)}>Up</button>
         <input value={newPace} onChange={handleChange} inputMode="numeric" />
-      </label>
-      <button onClick={makeHandleClick(1)}>Up</button>
-      <button onClick={makeHandleClick(-1)}>Down</button>
-    </section>
+        <button onClick={makeHandleClick(-1)}>Down</button>
+      </section>
+    </label>
   );
 }

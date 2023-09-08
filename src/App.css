@@ -20,13 +20,14 @@
 }
 
 .value-container {
-  width: 12rem;
+  display: flex;
+  align-items: center;
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid white;
 }
 
-input,
-select {
-  width: 100%;
+.value {
+  display: flex;
+  flex-direction: column;
 }

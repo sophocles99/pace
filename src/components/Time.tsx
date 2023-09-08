@@ -31,13 +31,13 @@ export default function Time({ time, changeValue }: TimeProps) {
   };
 
   return (
-    <section className="value-container">
-      <label>
-        Time
+    <label className="value-container">
+      Time
+      <section className="value">
+        <button onClick={makeHandleClick(1)}>Up</button>
         <input value={newTime} onChange={handleChange} />
-      </label>
-      <button onClick={makeHandleClick(1)}>Up</button>
-      <button onClick={makeHandleClick(-1)}>Down</button>
-    </section>
+        <button onClick={makeHandleClick(-1)}>Down</button>
+      </section>
+    </label>
   );
 }
