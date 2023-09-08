@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import round from "../utils/round";
 
 type DistanceProps = {
   distance: number;
@@ -17,14 +18,17 @@ export default function DistanceInput({
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const newValue = event.target.value;
-    console.log("handleChange", newValue)
+    console.log("handleChange", newValue);
     setNewDistance(newValue);
-    changeValue("distance", Math.round(Number(newValue) * 1000) / 1000);
+    changeValue("distance", Number(newValue));
   }
 
   function handleClick(increment: number) {
     return function () {
-      changeValue("distance", Math.round((distance + increment) * 1000) / 1000);
+      changeValue(
+        "distance",
+        round(Math.floor(distance * 10) / 10 + increment, 2)
+      );
     };
   }
 

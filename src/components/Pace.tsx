@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import round from "../utils/round";
 
 type PaceProps = {
   pace: number;
@@ -11,7 +12,7 @@ export default function PaceInput({ pace, changeValue }: PaceProps) {
   useEffect(() => {
     console.log(pace)
     const minutes = Math.floor(pace / 60);
-    const seconds = pace % 60;
+    const seconds = round(pace % 60, 1);
     const paceString = `${minutes}:${String(seconds).padStart(2, "0")}`;
     setNewPace(paceString);
   }, [pace]);
