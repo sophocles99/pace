@@ -54,6 +54,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <main>
       <Distance distance={distance} changeValue={changeValue} />
       <DistanceSelect distance={distance} changeValue={changeValue} />
       <Pace pace={pace} changeValue={changeValue} />
@@ -62,6 +63,7 @@ export default function App() {
       <p>Distance: {distance}</p>
       <p>Pace: {pace}</p>
       <p>Time: {time}</p>
+      </main>
     </div>
   );
 }

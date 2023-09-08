@@ -22,27 +22,29 @@ export default function DistanceInput({
     changeValue("distance", Number(newValue));
   };
 
-  const handleClick = (increment: number) => {
-    return function () {
-      changeValue(
-        "distance",
-        round(Math.floor(distance * 10) / 10 + increment, 2)
-      );
-    };
+  const makeHandleClick = (increment: number) => () => {
+    changeValue(
+      "distance",
+      round(Math.floor(distance * 10) / 10 + increment, 2)
+    );
   };
 
   return (
     <section className="value-container">
       <label htmlFor="distanceInput">Distance</label>
       <div className="value">
-        <button onClick={handleClick(0.1)}>Up</button>
+        <button className="up" onClick={makeHandleClick(0.1)}>
+          Up
+        </button>
         <input
           id="distanceInput"
           type="number"
           value={newDistance}
           onChange={handleChange}
         />
-        <button onClick={handleClick(-0.1)}>Down</button>
+        <button className="down" onClick={makeHandleClick(-0.1)}>
+          Down
+        </button>
       </div>
     </section>
   );

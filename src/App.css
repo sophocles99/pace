@@ -1,35 +1,54 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("./assets/Running-Wallpaper.jpg");
+  background-size: cover;
+  color: var(--foreground);
+  font-size: x-large;
+  --foreground: #ffffff;
+  --background: #2841ce;
+  --x-size: 6rem;
+  --y-size: 3rem;
+}
+
+main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: cornflowerblue;
-  font-size: x-large;
-}
-
-.value-container {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
   display: flex;
   align-items: center;
-  width: 24rem;
-  margin: 1rem 0;
+  width: 40%;
+  height: 90%;
   padding: 1rem;
   border: 1px solid white;
 }
 
 .value-container label {
   width: 8rem;
+}
+
+input, select {
+  width: var(--x-size);
+  height: var(--y-size);
+  text-align: center;
+  border: none;
+}
+
+button {
+  width: var(--x-size);
+  height: var(--y-size);
+  border: none;
+  background-color: var(--foreground);
+  color: var(--background);
+  opacity: 0.4;
+}
+
+button.up {
+  border-top-left-radius: 99999px;
+  border-top-right-radius: 99999px;
 }
 
 .value {
