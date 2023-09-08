@@ -9,7 +9,7 @@ export default function Time({ time, changeValue }: TimeProps) {
   const [newTime, setNewTime] = useState("");
 
   useEffect(() => {
-    time = Math.floor(time)
+    time = Math.floor(time);
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -19,27 +19,25 @@ export default function Time({ time, changeValue }: TimeProps) {
     setNewTime(timeString);
   }, [time]);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     let newValue = event?.target.value;
     newValue = newValue.replace(/\D/g, "");
     setNewTime(newValue);
     changeValue("time", Number(newValue));
-  }
+  };
 
-  function handleClick(increment: number) {
-    return function () {
-      changeValue("time", time + increment);
-    };
-  }
+  const makeHandleClick = (increment: number) => () => {
+    changeValue("time", time + increment);
+  };
 
   return (
-    <div className="input-container">
+    <section className="value-container">
       <label>
         Time
         <input value={newTime} onChange={handleChange} />
       </label>
-      <button onClick={handleClick(1)}>Up</button>
-      <button onClick={handleClick(-1)}>Down</button>
-    </div>
+      <button onClick={makeHandleClick(1)}>Up</button>
+      <button onClick={makeHandleClick(-1)}>Down</button>
+    </section>
   );
 }

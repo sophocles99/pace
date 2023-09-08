@@ -5,21 +5,21 @@ type DistanceProps = {
   changeValue: (valueType: string, newDistance: number) => void;
 };
 
+const raceDistances: Record<string, number> = {
+  "1 mile": 1.609344,
+  "5K": 5,
+  "10K": 10,
+  "15K": 15,
+  "10 miles": 16.09344,
+  "Half Marathon": 21.0975,
+  "20 miles": 32.18688,
+  Marathon: 42.195,
+};
+
 export default function DistanceSelect({
   distance,
   changeValue,
 }: DistanceProps) {
-  const raceDistances: Record<string, number> = {
-    "1 mile": 1.609344,
-    "5K": 5,
-    "10K": 10,
-    "15K": 15,
-    "10 miles": 16.09344,
-    "Half Marathon": 21.0975,
-    "20 miles": 32.18688,
-    Marathon: 42.195,
-  };
-
   const [selectedDistance, setSelectedDistance] = useState("");
 
   useEffect(() => {
@@ -32,15 +32,15 @@ export default function DistanceSelect({
     setSelectedDistance(matchingDistanceName);
   }, [distance]);
 
-  function handleChange(event: ChangeEvent<HTMLSelectElement>) {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newDistanceName = event.target.value;
     setSelectedDistance(newDistanceName);
     changeValue("distance", raceDistances[newDistanceName]);
-  }
+  };
 
   return (
-    <>
-      <label className="input-container">
+    <section className="value-container">
+      <label>
         Race Distance
         <select onChange={handleChange} value={selectedDistance}>
           <option value="" disabled>
@@ -55,6 +55,6 @@ export default function DistanceSelect({
           })}
         </select>
       </label>
-    </>
+    </section>
   );
 }
