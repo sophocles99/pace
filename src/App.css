@@ -22,9 +22,14 @@
 .value-container {
   display: flex;
   align-items: center;
+  width: 24rem;
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid white;
+}
+
+.value-container label {
+  width: 8rem;
 }
 
 .value {
