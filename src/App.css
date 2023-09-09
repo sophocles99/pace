@@ -1,12 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 .App {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 10vh;
   overflow: hidden;
-  background-image: url("./assets/Running-Wallpaper.jpg");
+  background-image: url("./assets/Running-Wallpaper2.jpg");
   background-size: cover;
   color: var(--foreground);
-  font-size: x-large;
-  --foreground: #ffffff;
+  font-family: Ubuntu, sans-serif;
+  font-size: 2rem;
+  --foreground: #f0f6f9;
   --background: #2841ce;
   --x-size: 6rem;
   --y-size: 3rem;
@@ -15,43 +22,87 @@
 main {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
+  row-gap: 2rem;
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 35vw;
+  min-width: 40rem;
   height: 90%;
-  padding: 1rem;
-  border: 1px solid white;
+  padding: 4rem;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0.4rem);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.value-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  column-gap: 2rem;
 }
 
 .value-container label {
-  width: 8rem;
+  width: 16rem;
+  text-align: right;
+  flex: 5;
 }
 
-input, select {
-  width: var(--x-size);
+.value {
+  width: 8rem;
+  flex: 5;
+}
+
+input,
+select {
+  width: 10rem;
+  font-weight: 700;
   height: var(--y-size);
-  text-align: center;
   border: none;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: var(--foreground);
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  font-size: 2rem;
+}
+
+select {
+  height: 4rem;
+  width: 12rem;
+  border-radius: 1.5rem;
 }
 
 button {
-  width: var(--x-size);
+  width: 10rem;
   height: var(--y-size);
   border: none;
   background-color: var(--foreground);
   color: var(--background);
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 button.up {
-  border-top-left-radius: 99999px;
-  border-top-right-radius: 99999px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+button.down {
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .value {
   display: flex;
   flex-direction: column;
+}
+
+.time {
+  width: 12rem;
 }

@@ -33,14 +33,18 @@ export default function PaceInput({ pace, changeValue }: PaceProps) {
     <section className="value-container">
       <label htmlFor="paceInput">Pace</label>
       <div className="value">
-        <button onClick={makeHandleClick(1)}>Up</button>
+        <button className="up" onClick={makeHandleClick(1)}>
+          Up
+        </button>
         <input
           id="paceInput"
           value={newPace}
           onChange={handleChange}
           inputMode="numeric"
         />
-        <button onClick={makeHandleClick(-1)}>Down</button>
+        <button className="down" onClick={makeHandleClick(-1)}>
+          Down
+        </button>
       </div>
     </section>
   );

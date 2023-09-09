@@ -58,11 +58,7 @@ export default function App() {
       <Distance distance={distance} changeValue={changeValue} />
       <DistanceSelect distance={distance} changeValue={changeValue} />
       <Pace pace={pace} changeValue={changeValue} />
-      <Time time={time} changeValue={changeValue} />
-      <br />
-      <p>Distance: {distance}</p>
-      <p>Pace: {pace}</p>
-      <p>Time: {time}</p>
+      <Time time={time} changeValue={changeValue} />    
       </main>
     </div>
   );

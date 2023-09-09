@@ -48,7 +48,7 @@ export default function DistanceSelect({
           value={selectedDistance}
         >
           <option value="" disabled>
-            Choose a race distance
+            Choose a distance
           </option>
           {Object.keys(raceDistances).map((raceDistanceName) => {
             return (
