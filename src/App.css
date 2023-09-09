@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
+@font-face {
+  font-family: digital;
+  src: url("./assets/digital-7/digital-7.ttf") format("truetype");
+}
+
 .App {
+  --foreground: #f0f6f9;
+  --background: #181a26;
+  --x-size: 6rem;
+  --y-size: 3rem;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
   height: 100vh;
@@ -10,13 +19,10 @@
   overflow: hidden;
   background-image: url("./assets/Running-Wallpaper2.jpg");
   background-size: cover;
+  background-position: center top;
   color: var(--foreground);
   font-family: Ubuntu, sans-serif;
   font-size: 2rem;
-  --foreground: #f0f6f9;
-  --background: #2841ce;
-  --x-size: 6rem;
-  --y-size: 3rem;
 }
 
 main {
@@ -25,11 +31,10 @@ main {
   row-gap: 2rem;
   display: flex;
   align-items: center;
-  width: 35vw;
-  min-width: 40rem;
-  height: 90%;
-  padding: 4rem;
-  border-radius: 2rem;
+  width: 40vw;
+  max-width: 35rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(0.4rem);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -42,23 +47,46 @@ main {
   column-gap: 2rem;
 }
 
-.value-container label {
-  width: 16rem;
-  text-align: right;
-  flex: 5;
+.label-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }
 
-.value {
+.input-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+label {
+}
+
+.input-block {
+  border-radius: 0.5rem;
+}
+
+.input-block.distance-input {
   width: 8rem;
-  flex: 5;
+}
+
+.input-block.distance-select {
+  width: 10rem;
+}
+
+.input-block.pace {
+  width: 7rem;
+}
+
+.input-block.time {
+  width: 10rem;
 }
 
 input,
 select {
-  width: 10rem;
-  font-weight: 700;
-  height: var(--y-size);
+  width: 100%;
   border: none;
+  outline: none;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.3);
   color: var(--foreground);
@@ -70,17 +98,19 @@ input::-webkit-outer-spin-button {
 }
 
 input {
+  height: var(--y-size);
+  font-family: digital;
   font-size: 2rem;
+  padding: 0;
 }
 
 select {
   height: 4rem;
-  width: 12rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 button {
-  width: 10rem;
+  width: 100%;
   height: var(--y-size);
   border: none;
   background-color: var(--foreground);
@@ -89,20 +119,11 @@ button {
 }
 
 button.up {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 button.down {
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-.value {
-  display: flex;
-  flex-direction: column;
-}
-
-.time {
-  width: 12rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }

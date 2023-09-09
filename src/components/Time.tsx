@@ -32,15 +32,24 @@ export default function Time({ time, changeValue }: TimeProps) {
 
   return (
     <section className="value-container">
-      <label htmlFor="timeInput">Time</label>
-      <div className="value">
-        <button className="up time" onClick={makeHandleClick(1)}>
-          Up
-        </button>
-        <input id="timeInput" className="time" value={newTime} onChange={handleChange} />
-        <button className="down time" onClick={makeHandleClick(-1)}>
-          Down
-        </button>
+      <div className="label-container">
+        <label htmlFor="timeInput">Time</label>
+      </div>
+      <div className="input-container">
+        <div className="input-block time">
+          <button className="up time" onClick={makeHandleClick(1)}>
+            Up
+          </button>
+          <input
+            id="timeInput"
+            className="time"
+            value={newTime}
+            onChange={handleChange}
+          />
+          <button className="down time" onClick={makeHandleClick(-1)}>
+            Down
+          </button>
+        </div>
       </div>
     </section>
   );

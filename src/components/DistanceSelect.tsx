@@ -40,24 +40,28 @@ export default function DistanceSelect({
 
   return (
     <section className="value-container">
-      <label htmlFor="distanceSelect">Race Distance</label>
-      <div className="value">
-        <select
-          id="distanceSelect"
-          onChange={handleChange}
-          value={selectedDistance}
-        >
-          <option value="" disabled>
-            Choose a distance
-          </option>
-          {Object.keys(raceDistances).map((raceDistanceName) => {
-            return (
-              <option value={raceDistanceName} key={raceDistanceName}>
-                {raceDistanceName}
-              </option>
-            );
-          })}
-        </select>
+      <div className="label-container">
+        <label htmlFor="distanceSelect">Race Distance</label>
+      </div>
+      <div className="input-container">
+        <div className="input-block distance-select">
+          <select
+            id="distanceSelect"
+            onChange={handleChange}
+            value={selectedDistance}
+          >
+            <option value="" disabled>
+              Choose a distance
+            </option>
+            {Object.keys(raceDistances).map((raceDistanceName) => {
+              return (
+                <option value={raceDistanceName} key={raceDistanceName}>
+                  {raceDistanceName}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
     </section>
   );

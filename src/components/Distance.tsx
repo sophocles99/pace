@@ -39,21 +39,25 @@ export default function DistanceInput({
 
   return (
     <section className="value-container">
-      <label htmlFor="distanceInput">Distance</label>
-      <div className="value">
-        <button className="up" onClick={makeHandleClick(0.1)}>
-          Up
-        </button>
-        <input
-          id="distanceInput"
-          type="number"
-          value={newDistance}
-          onKeyDown={handleKeyDown}
-          onChange={handleChange}
-        />
-        <button className="down" onClick={makeHandleClick(-0.1)}>
-          Down
-        </button>
+      <div className="label-container">
+        <label htmlFor="distanceInput">Distance</label>
+      </div>
+      <div className="input-container">
+        <div className="input-block distance-input">
+          <button className="up" onClick={makeHandleClick(0.1)}>
+            Up
+          </button>
+          <input
+            id="distanceInput"
+            type="number"
+            value={newDistance}
+            onKeyDown={handleKeyDown}
+            onChange={handleChange}
+          />
+          <button className="down" onClick={makeHandleClick(-0.1)}>
+            Down
+          </button>
+        </div>
       </div>
     </section>
   );
