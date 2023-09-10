@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: digital;
-  src: url("./assets/digital-7/digital-7.ttf") format("truetype");
+  src: url("./assets/fonts/BALLSONTHERAMPAGE.ttf") format("truetype");
 }
 
 .App {
@@ -35,7 +35,7 @@ main {
   max-width: 35rem;
   padding: 2rem;
   border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(0.4rem);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -60,6 +60,7 @@ main {
 }
 
 label {
+  text-align: center;
 }
 
 .input-block {
@@ -87,9 +88,11 @@ select {
   width: 100%;
   border: none;
   outline: none;
+  font-family: digital;
+  font-size: 2rem;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: var(--foreground);
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
 input::-webkit-inner-spin-button,
@@ -99,9 +102,9 @@ input::-webkit-outer-spin-button {
 
 input {
   height: var(--y-size);
-  font-family: digital;
-  font-size: 2rem;
   padding: 0;
+  border-top: 1px solid var(--background);
+  border-bottom: 1px solid var(--background);
 }
 
 select {
@@ -115,7 +118,6 @@ button {
   border: none;
   background-color: var(--foreground);
   color: var(--background);
-  opacity: 0.3;
 }
 
 button.up {
