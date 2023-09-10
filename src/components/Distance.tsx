@@ -1,4 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import Button from "./Button";
 import round from "../utils/round";
 
 type DistanceProps = {
@@ -44,9 +45,7 @@ export default function DistanceInput({
       </div>
       <div className="input-container">
         <div className="input-block distance-input">
-          <button className="up" onClick={makeHandleClick(0.1)}>
-            Up
-          </button>
+          <Button direction="up" onClick={makeHandleClick(0.1)} />
           <input
             id="distanceInput"
             type="number"
