@@ -53,9 +53,7 @@ export default function DistanceInput({
             onKeyDown={handleKeyDown}
             onChange={handleChange}
           />
-          <button className="down" onClick={makeHandleClick(-0.1)}>
-            Down
-          </button>
+          <Button direction="down" onClick={makeHandleClick(-0.1)} />
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import Button from "./Button";
 
 type TimeProps = {
   time: number;
@@ -37,18 +38,14 @@ export default function Time({ time, changeValue }: TimeProps) {
       </div>
       <div className="input-container">
         <div className="input-block time">
-          <button className="up time" onClick={makeHandleClick(1)}>
-            Up
-          </button>
+          <Button direction="up" onClick={makeHandleClick(1)} />
           <input
             id="timeInput"
             className="time"
             value={newTime}
             onChange={handleChange}
           />
-          <button className="down time" onClick={makeHandleClick(-1)}>
-            Down
-          </button>
+          <Button direction="down" onClick={makeHandleClick(-1)} />
         </div>
       </div>
     </section>

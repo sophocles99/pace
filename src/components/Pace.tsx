@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import Button from "./Button";
 import round from "../utils/round";
 
 type PaceProps = {
@@ -36,18 +37,14 @@ export default function PaceInput({ pace, changeValue }: PaceProps) {
       </div>
       <div className="input-container">
         <div className="input-block pace">
-          <button className="up" onClick={makeHandleClick(1)}>
-            Up
-          </button>
+          <Button direction="up" onClick={makeHandleClick(1)} />{" "}
           <input
             id="paceInput"
             value={newPace}
             onChange={handleChange}
             inputMode="numeric"
           />
-          <button className="down" onClick={makeHandleClick(-1)}>
-            Down
-          </button>
+          <Button direction="down" onClick={makeHandleClick(-1)}/>
         </div>
       </div>
     </section>
