@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import Select, { Options } from "react-select";
+import Select from "react-select";
 import round from "../utils/round";
 
 type DistanceProps = {
@@ -23,7 +23,7 @@ const raceDistances: Record<string, number> = {
   Marathon: 42.195,
 };
 
-const distanceOptions: Options<Option> = [
+const distanceOptions: Option[] = [
   { value: 1.609344, label: "1 mile" },
   { value: 5, label: "5K" },
   { value: 10, label: "10K" },
@@ -49,10 +49,12 @@ export default function DistanceSelect({
     setSelectedDistance(matchingDistanceOption);
   }, [distance]);
 
-  const handleChange = (newOption: Option) => {
+  const handleChange = (newOption: Option | null) => {
     console.log(newOption);
     setSelectedDistance(newOption);
-    changeValue("distance", newOption.value);
+    if (newOption) {
+      changeValue("distance", newOption.value);
+    }
   };
 
   return (
