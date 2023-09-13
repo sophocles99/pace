@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: digital;
-  src: url("./assets/fonts/BALLSONTHERAMPAGE.ttf") format("truetype");
+  src: url("../assets/fonts/BALLSONTHERAMPAGE.ttf") format("truetype");
 }
 
 .App {
@@ -17,7 +17,7 @@
   height: 100vh;
   padding: 8vh 6vh;
   overflow: hidden;
-  background-image: url("./assets/Running-Wallpaper2.jpg");
+  background-image: url("../assets/Running-Wallpaper2.jpg");
   background-size: cover;
   background-position: center top;
   color: var(--foreground);
@@ -81,7 +81,7 @@ label {
 }
 
 .input-block.time {
-  width: 10 rem;
+  width: 10rem;
 }
 
 input,

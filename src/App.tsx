@@ -1,5 +1,5 @@
 import { Dispatch, useState } from "react";
-import "./App.css";
+import "./styles/App.css";
 
 import Distance from "./components/Distance";
 import DistanceSelect from "./components/DistanceSelect";
@@ -55,10 +55,10 @@ export default function App() {
   return (
     <div className="App">
       <main>
-      <Distance distance={distance} changeValue={changeValue} />
-      <DistanceSelect distance={distance} changeValue={changeValue} />
-      <Pace pace={pace} changeValue={changeValue} />
-      <Time time={time} changeValue={changeValue} />    
+        <Distance distance={distance} changeValue={changeValue} />
+        <DistanceSelect distance={distance} changeValue={changeValue} />
+        <Pace pace={pace} changeValue={changeValue} />
+        <Time time={time} changeValue={changeValue} />
       </main>
     </div>
   );

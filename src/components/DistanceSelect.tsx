@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Select, { StylesConfig } from "react-select";
+import Select, { ActionMeta, Options } from "react-select";
+import styles from "../styles/distanceSelect"
 import round from "../utils/round";
 
 type DistanceProps = {
@@ -38,28 +39,12 @@ export default function DistanceSelect({
     setSelectedDistance(matchingDistanceOption);
   }, [distance]);
 
-  const handleChange = (newOption: Option | null) => {
-    console.log(newOption);
+  const handleChange = (newOption: Option | null, actionMeta: ActionMeta<Option>) => {
+    console.log(newOption, actionMeta);
     setSelectedDistance(newOption);
     if (newOption) {
       changeValue("distance", newOption.value);
     }
-  };
-
-  const styles: StylesConfig = {
-    control: (defaultStyles) => ({
-      ...defaultStyles,
-      height: "4rem",
-      borderRadius: "0.5rem",
-      backgroundColor: "inherit",
-      caretColor: "transparent",
-    }),
-    option: (defaultStyles, { data, isSelected }) => {
-      if (isSelected) {
-        console.log(data, defaultStyles);
-      }
-      return { ...defaultStyles, backgroundColor: isSelected ? "var(--background)" : "var(--foreground)" };
-    },
   };
 
   return (
