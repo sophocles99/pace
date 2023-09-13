@@ -64,7 +64,6 @@ label {
 }
 
 .input-block {
-  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -82,11 +81,11 @@ label {
 }
 
 .input-block.time {
-  width: 10rem;
+  width: 10 rem;
 }
 
 input,
-select {
+.select-container {
   width: 100%;
   margin: 0;
   border: none;
@@ -110,12 +109,10 @@ input {
   font-size: 2rem;
 }
 
-select {
+.select-container {
   height: 4rem;
   border-radius: 0.5rem;
-  font-size: 1.75rem;
-  line-height: 4rem;
-  padding: 50px;
+  font-size: 2rem;
 }
 
 option {

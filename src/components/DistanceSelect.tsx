@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Select from "react-select";
+import Select, { StylesConfig } from "react-select";
 import round from "../utils/round";
 
 type DistanceProps = {
@@ -46,6 +46,22 @@ export default function DistanceSelect({
     }
   };
 
+  const styles: StylesConfig = {
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      height: "4rem",
+      borderRadius: "0.5rem",
+      backgroundColor: "inherit",
+      caretColor: "transparent",
+    }),
+    option: (defaultStyles, { data, isSelected }) => {
+      if (isSelected) {
+        console.log(data, defaultStyles);
+      }
+      return { ...defaultStyles, backgroundColor: isSelected ? "var(--background)" : "var(--foreground)" };
+    },
+  };
+
   return (
     <section className="value-container">
       <div className="label-container">
@@ -54,10 +70,13 @@ export default function DistanceSelect({
       <div className="input-container">
         <div className="input-block distance-select">
           <Select
-            id="distanceSelect"
+            inputId="distanceSelect"
+            className="select-container"
             options={distanceOptions}
             onChange={handleChange}
             value={selectedDistance}
+            placeholder="Choose Race Distance"
+            styles={styles}
           />
         </div>
       </div>
