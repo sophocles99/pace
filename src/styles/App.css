@@ -8,7 +8,7 @@
 .App {
   --background: #f0f6f9;
   --foreground: #181a26;
-  --foreground-dim: rgba(24, 26, 38, 0.6);
+  --foreground-dim: rgba(24, 26, 38, 0.2);
   --x-size: 6rem;
   --y-size: 3rem;
   display: flex;
@@ -98,6 +98,7 @@ input,
   text-align: center;
   background-color: inherit;
   color: inherit;
+  appearance:textfield;
 }
 
 input::-webkit-inner-spin-button,
