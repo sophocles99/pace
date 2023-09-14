@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Select, { ActionMeta, Options } from "react-select";
-import styles from "../styles/distanceSelect"
+import Select from "react-select";
+import selectStyles from "../styles/selectStyles";
 import round from "../utils/round";
 
 type DistanceProps = {
@@ -39,8 +39,8 @@ export default function DistanceSelect({
     setSelectedDistance(matchingDistanceOption);
   }, [distance]);
 
-  const handleChange = (newOption: Option | null, actionMeta: ActionMeta<Option>) => {
-    console.log(newOption, actionMeta);
+  const handleChange = (newOption: Option | null) => {
+    console.log(newOption);
     setSelectedDistance(newOption);
     if (newOption) {
       changeValue("distance", newOption.value);
@@ -61,7 +61,7 @@ export default function DistanceSelect({
             onChange={handleChange}
             value={selectedDistance}
             placeholder="Choose Race Distance"
-            styles={styles}
+            styles={selectStyles}
           />
         </div>
       </div>

@@ -6,8 +6,9 @@
 }
 
 .App {
-  --foreground: #f0f6f9;
-  --background: #181a26;
+  --background: #f0f6f9;
+  --foreground: #181a26;
+  --foreground-dim: rgba(24, 26, 38, 0.6);
   --x-size: 6rem;
   --y-size: 3rem;
   display: flex;
@@ -20,7 +21,6 @@
   background-image: url("../assets/Running-Wallpaper2.jpg");
   background-size: cover;
   background-position: center top;
-  color: var(--foreground);
   font-family: Ubuntu, sans-serif;
   font-size: 2rem;
 }
@@ -51,6 +51,7 @@ main {
   display: flex;
   justify-content: center;
   flex: 1;
+  color: var(--background);
 }
 
 .input-container {
@@ -66,6 +67,9 @@ label {
 .input-block {
   display: flex;
   flex-direction: column;
+  border-radius: 0.5rem;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .input-block.distance-input {
@@ -92,8 +96,8 @@ input,
   outline: none;
   font-family: digital;
   text-align: center;
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: inherit;
+  color: inherit;
 }
 
 input::-webkit-inner-spin-button,
@@ -104,8 +108,8 @@ input::-webkit-outer-spin-button {
 input {
   height: var(--y-size);
   padding: 0;
-  border-top: 1px solid var(--background);
-  border-bottom: 1px solid var(--background);
+  border-top: 1px solid var(--foreground);
+  border-bottom: 1px solid var(--foreground);
   font-size: 2rem;
 }
 
@@ -124,8 +128,8 @@ button {
   height: var(--y-size);
   margin: 0;
   border: none;
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: inherit;
+  color: inherit;
 }
 
 button.up {
