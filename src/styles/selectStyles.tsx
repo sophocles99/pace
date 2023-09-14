@@ -22,6 +22,34 @@ const selectStyles: StylesConfig = {
     ...defaultStyles,
     color: "var(--foreground)",
   }),
+  dropdownIndicator: (defaultStyles) => ({
+    ...defaultStyles,
+    padding: "0 8px 0 0",
+  }),
+  indicatorSeparator: (defaultStyles) => ({
+    ...defaultStyles,
+    display: "none",
+  }),
+  menu: (defaultStyles) => ({
+    ...defaultStyles,
+    borderRadius: "0.5rem",
+  }),
+  menuList: (defaultStyles) => ({
+    ...defaultStyles,
+    borderRadius: "0.5rem",
+    "::-webkit-scrollbar": {
+      width: "1rem",
+      backgroundColor: "var(--background)",
+      borderTopRightRadius: "0.5rem",
+      borderBottomRightRadius: "0.5rem",
+    },
+    "::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+      border: "1px solid var(--foreground)",
+      borderRadius: "0.5rem",
+      opacity: "0.2",
+    },
+  }),
   option: (defaultStyles, { isSelected }) => {
     return {
       ...defaultStyles,
