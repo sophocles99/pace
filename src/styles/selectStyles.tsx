@@ -33,6 +33,7 @@ const selectStyles: StylesConfig = {
   menu: (defaultStyles) => ({
     ...defaultStyles,
     borderRadius: "0.5rem",
+    marginTop: "0.25rem"
   }),
   menuList: (defaultStyles) => ({
     ...defaultStyles,
