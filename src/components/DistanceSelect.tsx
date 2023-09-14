@@ -39,10 +39,10 @@ export default function DistanceSelect({
     setSelectedDistance(matchingDistanceOption);
   }, [distance]);
 
-  const handleChange = (newOption: Option | null) => {
+  const handleChange = (newOption: any) => {
     console.log(newOption);
-    setSelectedDistance(newOption);
     if (newOption) {
+      setSelectedDistance(newOption);
       changeValue("distance", newOption.value);
     }
   };
